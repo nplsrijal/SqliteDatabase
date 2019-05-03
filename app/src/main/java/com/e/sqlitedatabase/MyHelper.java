@@ -74,5 +74,14 @@ public class MyHelper extends SQLiteOpenHelper {
         }
         return dictionaryList;
         }
+    public boolean UpdateData(int wordid,String word, String meaning , SQLiteDatabase db){
+
+        ContentValues contentValues =new ContentValues();
+        contentValues.put(Word,word);
+        contentValues.put(Meaning,meaning);
+        db.update(tblWord, contentValues, "WordID="+wordid, null);
+
+        return true;
+    }
     }
 

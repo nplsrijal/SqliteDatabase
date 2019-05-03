@@ -41,9 +41,10 @@ public class MainActivity extends AppCompatActivity {
         wordList =myHelper.GetAllWords(sqLiteDatabase);
 
         final HashMap<String ,String > hashMap = new HashMap<>();
+        final HashMap<String,Integer > idhash = new HashMap<>();
 
         for (int i =0; i<wordList.size();i++){
-            hashMap.put(wordList.get(i).getWord(),wordList.get(i).getMeaning());
+            hashMap.put(wordList.get(i).getWord(),wordList.get(i).getMeaning()+"->"+wordList.get(i).getWordId());
 
 
         }
@@ -55,8 +56,13 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String word = parent.getItemAtPosition(position).toString();
                 String mean = hashMap.get(word);
+                String[] parts=mean.split("->");
+
+
                 Intent intent = new Intent(MainActivity.this, AnotherActivity.class);
-                intent.putExtra("meaning", mean);
+                intent.putExtra("meaning", parts[0]);
+                intent.putExtra("wordid", parts[1]);
+                intent.putExtra("word", word);
 
                 startActivity(intent);
                 //Toast.makeText(getApplicationContext(),mean.toString(),Toast.LENGTH_LONG).show();
