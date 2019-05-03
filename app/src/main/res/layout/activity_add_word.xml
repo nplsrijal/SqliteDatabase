@@ -25,4 +25,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/btnsaveword"
         android:text="Add Word"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnreturn"
+        android:text="Return To List "/>
 </LinearLayout>

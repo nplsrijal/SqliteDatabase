@@ -2,6 +2,7 @@ package com.e.sqlitedatabase;
 
 
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import java.io.PrintStream;
 
 public class AddWordActivity extends AppCompatActivity {
     EditText txtword,txtmeaning;
-    Button btnsave;
+    Button btnsave,btnreturn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +28,7 @@ public class AddWordActivity extends AppCompatActivity {
         txtword=findViewById(R.id.txtword);
         txtmeaning=findViewById(R.id.txtmeaning);
         btnsave=findViewById(R.id.btnsaveword);
+        btnreturn=findViewById(R.id.btnreturn);
 
         final MyHelper myHelper=new MyHelper(this);
         final SQLiteDatabase db=myHelper.getWritableDatabase();
@@ -45,6 +47,13 @@ public class AddWordActivity extends AppCompatActivity {
                     Toast.makeText(AddWordActivity.this,"Error", Toast.LENGTH_SHORT).show();
 
                 }
+            }
+        });
+        btnreturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(AddWordActivity.this,MainActivity.class);
+                startActivity(intent);
             }
         });
 

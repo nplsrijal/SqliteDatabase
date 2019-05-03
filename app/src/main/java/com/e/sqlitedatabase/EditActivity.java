@@ -1,5 +1,6 @@
 package com.e.sqlitedatabase;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,6 +38,8 @@ public class EditActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(myHelper.UpdateData(Integer.parseInt(txtwordid.getText().toString()),txtword.getText().toString(),txtmeaning.getText().toString(),db))
                 {
+                    Intent intent =new Intent(EditActivity.this,MainActivity.class);
+                    startActivity(intent);
                     Toast.makeText(EditActivity.this,"Successfully Updated" , Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(EditActivity.this,"Error", Toast.LENGTH_SHORT).show();

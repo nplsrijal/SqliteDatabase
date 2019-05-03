@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.e.sqlitedatabase.model.Word;
@@ -22,7 +23,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private ListView lstword;
-
+private Button btnsearch,btnadd;
 
 
 
@@ -31,6 +32,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         lstword=findViewById(R.id.lstwords);
         LoadWord();
+        btnsearch=findViewById(R.id.btnsearch);
+        btnsearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this,SearchActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnadd=findViewById(R.id.btnadd);
+        btnadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(MainActivity.this,AddWordActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void LoadWord() {
