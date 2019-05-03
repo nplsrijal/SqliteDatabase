@@ -83,5 +83,9 @@ public class MyHelper extends SQLiteOpenHelper {
 
         return true;
     }
+    public boolean DeleteData(int wordid, SQLiteDatabase db)
+    {
+        return db.delete(tblWord, WordID + "=" + wordid, null) > 0;
+    }
     }
 

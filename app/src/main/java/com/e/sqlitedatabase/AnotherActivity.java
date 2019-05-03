@@ -1,6 +1,9 @@
 package com.e.sqlitedatabase;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +64,43 @@ public class AnotherActivity extends AppCompatActivity {
                 startActivity(i);
 
 
+            }
+        });
+        final MyHelper myHelper=new MyHelper(this);
+        final SQLiteDatabase db=myHelper.getWritableDatabase();
+        btndel=findViewById(R.id.btndel);
+        btndel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(AnotherActivity.this);
+                builder.setTitle("Confirm dialog demo !");
+                builder.setMessage("You are about to delete all records of database. Do you really want to proceed ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(myHelper.DeleteData(Integer.parseInt(txtwordid.getText().toString()),db))
+                        {
+                            Intent intent=new Intent(AnotherActivity.this,MainActivity.class);
+                            startActivity(intent);
+
+                            Toast.makeText(AnotherActivity.this,"Successfully Deleted" , Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(AnotherActivity.this,"Error", Toast.LENGTH_SHORT).show();
+
+                        }
+
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(), "You've changed your mind to delete this record", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                builder.show();
             }
         });
     }
