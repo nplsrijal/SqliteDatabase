@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 public class AnotherActivity extends AppCompatActivity {
     private TextView tvout;
-    private Button btnback;
+    private Button btnback,btnedit,btndel;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +26,7 @@ public class AnotherActivity extends AppCompatActivity {
             String meaning = bundle.getString("meaning");
             tvout = findViewById(R.id.tvout);
             tvout.setText(meaning);
+
         }
     }
 }

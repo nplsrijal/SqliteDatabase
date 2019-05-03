@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i =0; i<wordList.size();i++){
             hashMap.put(wordList.get(i).getWord(),wordList.get(i).getMeaning());
 
+
         }
         ArrayAdapter<String>stringArrayAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,new ArrayList<String>(hashMap.keySet()));
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 String mean = hashMap.get(word);
                 Intent intent = new Intent(MainActivity.this, AnotherActivity.class);
                 intent.putExtra("meaning", mean);
+
                 startActivity(intent);
                 //Toast.makeText(getApplicationContext(),mean.toString(),Toast.LENGTH_LONG).show();
             }
