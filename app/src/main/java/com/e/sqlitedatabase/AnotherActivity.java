@@ -73,7 +73,7 @@ public class AnotherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(AnotherActivity.this);
-                builder.setTitle("Confirm dialog demo !");
+                builder.setTitle("Confirmation dialog  !");
                 builder.setMessage("You are about to delete all records of database. Do you really want to proceed ?");
                 builder.setCancelable(false);
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
